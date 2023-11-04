@@ -6,6 +6,7 @@
 			<class name="com.tutorialsninja.TestCases.RegisterTest" />
 			<class name="com.tutorialsninja.TestCases.LoginTest" />
 			<class name="com.tutorialsninja.TestCases.SearchProductTest" />
+			<class name="com.tutorialsninja.TestCases.AddToCartTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
