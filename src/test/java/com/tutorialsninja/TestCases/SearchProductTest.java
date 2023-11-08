@@ -13,7 +13,7 @@ public class SearchProductTest {
 	public WebDriver driver;
 
 	@BeforeMethod
-	public void registerSetup() {
+	public void searchProductSetup() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://tutorialsninja.com/demo");
@@ -24,7 +24,6 @@ public class SearchProductTest {
 		driver.findElement(By.name("search")).sendKeys("HP");
 		driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
-
 	}
 
 	@Test(priority = 2)
@@ -48,5 +47,4 @@ public class SearchProductTest {
 	public void tearDown() {
 		driver.quit();
 	}
-
 }

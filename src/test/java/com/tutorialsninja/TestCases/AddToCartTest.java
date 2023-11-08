@@ -21,7 +21,6 @@ public class AddToCartTest {
 
 	@Test
 	public void checkingOutValidProduct() throws Exception {
-
 		driver.findElement(By.name("search")).sendKeys("HP");
 		driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click();
 		Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
@@ -38,16 +37,54 @@ public class AddToCartTest {
 		Thread.sleep(3000);
 		driver.findElement(By.linkText("Checkout")).click();
 
+//		driver.findElement(By.xpath("//a[@class='accordion-toggle']")).click();
+//		driver.findElement(By.xpath("//label/following::input[@name='account']")).click();
+//		driver.findElement(By.xpath("//input[@id='button-account']")).click();
+
 //		driver.findElement(By.name("search")).sendKeys("HP");
-//		driver.findElement(By.cssSelector("i.fa.fa-search")).click();
+//		driver.findElement(By.cssSelector("i.fa.fa-search")).click(); //can you use this one instead?
 //		Assert.assertTrue(driver.findElement(By.linkText("HP LP3065")).isDisplayed());
-//
-//		driver.findElement(By.linkText("HP LP3065")).click();
-//		Assert.assertTrue(driver.findElement(By.id("button-cart")).isDisplayed());
-//
-//		driver.findElement(By.id("button-cart")).click();
+//		driver.findElement(By.linkText("HP LP3065")).click(); //can you use link text instead of button? 
+//		driver.findElement(By.id("button-cart")).click(); // could you just call it directly or better to use Xpath?
 //		Assert.assertTrue(
 //				driver.findElement(By.cssSelector("div.alert.alert-success.alert-dismissible")).isDisplayed());
+
+		// Checkout options
+//		driver.findElement(By.id("input-email")).sendKeys("seleniumpanda@gmail.com");
+//		driver.findElement(By.id("input-password")).sendKeys("Selenium@123");
+//		driver.findElement(By.cssSelector("input.btn.btn-primary")).click();
+
+		// Billing details
+		driver.findElement(By.xpath("//input[@name='payment_address']")).click();
+		driver.findElement(By.id("input-payment-firstname")).sendKeys("selenium");
+		driver.findElement(By.id("input-payment-lastname")).sendKeys("panda");
+		driver.findElement(By.id("input-payment-company")).sendKeys("PandaCompany");
+		driver.findElement(By.id("input-payment-address-1")).sendKeys("1 Panda St");
+		driver.findElement(By.id("input-payment-address-2")).sendKeys("2 Panda St");
+		driver.findElement(By.id("input-payment-city")).sendKeys("PandaCity");
+		driver.findElement(By.id("input-payment-postcode")).sendKeys("123");
+		driver.findElement(By.id("input-payment-country")).click();
+		driver.findElement(By.xpath("//option[@value='223']")).click();
+		driver.findElement(By.xpath("//select[@id= 'input-payment-zone']")).click();
+		driver.findElement(By.xpath("//option[@value='3614']")).click();
+		driver.findElement(By.cssSelector("input.btn.btn-primary")).click();
+		driver.findElement(By.cssSelector("input.btn.btn-primary")).click(); // ?
+		driver.findElement(By.xpath("//input[@name='shipping_method']")).click();
+		driver.findElement(By.xpath("//textarea[@name='comment']")).sendKeys("send package to garageDoor");
+		driver.findElement(By.xpath("//input[@id='button-shipping-method']")).click();
+		driver.findElement(By.xpath("//input[@name='payment_method']")).click();
+		driver.findElement(By.xpath(
+				"//div[@class='buttons']/preceding::textarea[@name='comment' and @class='form-control' and @rows=8]"))
+				.sendKeys("cash payment");
+		driver.findElement(By.xpath("//input[@name = 'agree']")).click();
+		driver.findElement(By.xpath("//input[@id = 'button-payment-method']")).click();
+		driver.findElement(By.xpath("//input[@id = 'button-confirm']")).click();
+		String expectedOrderSuccessMessage = "Your order has been successfully processed!";
+				
+				
+				
+		//String actualOrderSuccessMessage = driver.findElement(By.xpath("//div[@class='col-sm-12']/child::p[1]"));
+
 	}
 
 	@AfterMethod
